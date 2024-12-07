@@ -1,0 +1,28 @@
+/* Resetando margens e padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo do corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 20px;
+}
+
+/* Estilo do cabeçalho */
+h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+/* Estilo da descrição */
+p {
+  text-align: center;
+  color: #666;
+  font-size: 1.2em;
+}

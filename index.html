@@ -1,0 +1,62 @@
+<!-- Alunas Maria Eduarda e Ana Julia -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garagem de Veículos</title>
+    <link rel="stylesheet" href="/src/pages/style.css"> <!-- Link para o CSS externo -->
+</head>
+
+<body>
+    <header>
+        <img src="logo-garagem.jpeg" id="logo" alt="Logo da Garagem">
+        <h1>Bem-vindo à garagem de veículos!</h1>
+    </header>
+
+    <p>Confira abaixo nossos anúncios de veículos à venda:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Fabricante</th>
+                <th>Ano</th>
+                <th>Combustível</th>
+                <th>Cor</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody id="tabela-veiculos">
+            <!-- A lista de veículos será injetada aqui via JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        // Dados de veículos para a listagem
+        fetch('/veiculo')
+            .then(response => response.json())
+            .then(veiculos => {
+                const tabelaVeiculos = document.getElementById('tabela-veiculos');
+                veiculos.forEach(veiculo => {
+                    const linha = document.createElement('tr');
+                    linha.innerHTML = `
+            <td>${veiculo.nome}</td>
+            <td>${veiculo.fabricante}</td>
+            <td>${veiculo.ano}</td>
+            <td>
+              <img src="icone-combustivel.png" class="icon" alt="Ícone de combustível">
+              ${veiculo.combustivel}
+            </td>
+            <td>${veiculo.cor}</td>
+            <td>R$ ${veiculo.preco}</td>
+          `;
+                    tabelaVeiculos.appendChild(linha);
+                });
+            });
+    </script>
+</body>
+
+</html>
